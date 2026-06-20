@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>生物化学题库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section id="practiceView" class="practice-view">
+        <nav class="quick-nav" aria-label="页面导航">
+          <button id="catalogButton" type="button">题库</button>
+          <button id="wrongButton" type="button">错题</button>
+          <button id="settingsButton" type="button">设置</button>
+        </nav>
+
+        <article class="question-card full-question" id="questionCard">
+          <div class="empty-state">正在加载题目...</div>
+        </article>
+
+        <section class="question-dock" aria-label="题号">
+          <div class="question-list-head">
+            <strong id="currentChapterTitle">当前章节</strong>
+            <button id="resetChapter" type="button">重做</button>
+          </div>
+          <div id="questionList" class="question-list"></div>
+        </section>
+      </section>
+
+      <section id="catalogView" class="secondary-view" hidden>
+        <header class="page-head">
+          <button class="backPractice" type="button">返回做题</button>
+          <div>
+            <h1>题库目录</h1>
+            <p id="bankMeta">正在加载题库...</p>
+          </div>
+        </header>
+
+        <section class="panel catalog-panel">
+          <div class="section-title">
+            <h2>章节</h2>
+            <span id="chapterCount">0</span>
+          </div>
+          <div id="chapterList" class="chapter-list"></div>
+        </section>
+      </section>
+
+      <section id="settingsView" class="secondary-view" hidden>
+        <header class="page-head">
+          <button class="backPractice" type="button">返回做题</button>
+          <div>
+            <h1>设置</h1>
+            <p id="syncStatus">本地记录</p>
+          </div>
+        </header>
+
+        <section class="panel settings-grid">
+          <div class="setting-block">
+            <h2>学习档案</h2>
+            <div class="profile-row">
+              <input id="profileInput" type="text" value="default" autocomplete="off" />
+              <button id="syncButton" type="button">同步</button>
+            </div>
+          </div>
+
+          <div class="setting-block">
+            <h2>公网同步</h2>
+            <input id="supabaseUrl" type="url" placeholder="Supabase Project URL" autocomplete="off" />
+            <input id="supabaseKey" type="password" placeholder="Supabase anon key" autocomplete="off" />
+            <div class="button-row">
+              <button id="saveSupabase" type="button">保存配置</button>
+              <button id="clearSupabase" type="button">清除配置</button>
+            </div>
+          </div>
+
+          <div class="setting-block">
+            <h2>题库文件</h2>
+            <input id="jsonImport" type="file" accept=".json,application/json" />
+            <div class="button-row">
+              <button id="exportBank" type="button">导出题库</button>
+              <button id="restoreBank" type="button">恢复默认</button>
+            </div>
+          </div>
+
+          <div class="setting-block">
+            <h2>做题进度</h2>
+            <div class="button-row">
+              <button id="exportProgress" type="button">导出进度</button>
+              <label class="file-button">
+                导入进度
+                <input id="progressImport" type="file" accept=".json,application/json" />
+              </label>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="wrongView" class="secondary-view" hidden>
+        <header class="page-head">
+          <button class="backPractice" type="button">返回做题</button>
+          <div>
+            <h1>错题回顾</h1>
+            <p>选择模式后返回做题页复练。</p>
+          </div>
+        </header>
+
+        <section class="panel mode-panel">
+          <button class="active" data-mode="all" type="button">全部题目</button>
+          <button data-mode="wrong" type="button">本章错题</button>
+          <button data-mode="repeatWrong" type="button">反复错题</button>
+        </section>
+
+        <section class="stats-grid" aria-label="章节统计">
+          <div><span id="statTotal">0</span><small>题目</small></div>
+          <div><span id="statDone">0</span><small>已做</small></div>
+          <div><span id="statCorrect">0</span><small>正确</small></div>
+          <div><span id="statWrong">0</span><small>错题</small></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
