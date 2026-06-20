@@ -35,11 +35,13 @@ const els = {
 
 let bank = { chapters: [] };
 let defaultBank = null;
+const DEFAULT_SUPABASE_URL = "https://ownxkedwznqbpoqkvmpq.supabase.co";
+const DEFAULT_SUPABASE_KEY = "sb_publishable_PDsGEwbWUw-oDmQGd_Zbpg_mal_Fpyt";
 let state = {
   profile: localStorage.getItem("qb.profile") || "default",
   answers: {},
-  supabaseUrl: localStorage.getItem("qb.supabaseUrl") || "",
-  supabaseKey: localStorage.getItem("qb.supabaseKey") || "",
+  supabaseUrl: localStorage.getItem("qb.supabaseUrl") || DEFAULT_SUPABASE_URL,
+  supabaseKey: localStorage.getItem("qb.supabaseKey") || DEFAULT_SUPABASE_KEY,
   chapterIndex: 0,
   questionIndex: 0,
   mode: "all",
