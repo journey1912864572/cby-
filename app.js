@@ -104,12 +104,15 @@ function hasSupabaseConfig() {
 }
 
 function supabaseHeaders() {
-  return {
+  const headers = {
     apikey: state.supabaseKey,
-    Authorization: `Bearer ${state.supabaseKey}`,
     "Content-Type": "application/json",
     Prefer: "resolution=merge-duplicates,return=representation",
   };
+  if (!state.supabaseKey.startsWith("sb_publishable_")) {
+    headers.Authorization = `Bearer ${state.supabaseKey}`;
+  }
+  return headers;
 }
 
 function supabaseEndpoint() {
